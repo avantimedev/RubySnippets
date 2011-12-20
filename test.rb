@@ -9,6 +9,12 @@ class Person
 	end
 end
 
+class Boss < Person
+	def to_s
+		"Boss: " + @name + ", " + @email
+	end
+end
+
 def print_helllo
 	puts "Hello World!"
 end
@@ -39,8 +45,9 @@ puts e.pop
 puts e.pop
 
 p = Person.new("johan", "johan@baminfo.se")
-
+z = Boss.new("johan", "johan@baminfo.se")
 puts p
+puts z
 
 t1 = Thread.new do
 	puts "In new thread"
@@ -87,3 +94,29 @@ end
 puts "Johan".upcase
 puts "Johan".capitalize
 puts "Johan".downcase
+
+puts Math.sin(1)
+puts Math.cos(1)
+
+module Trig
+	PI = 3.141592654
+	def Trig.hello_world
+		puts "Hello World!"	
+	end
+end
+
+puts Trig::PI/4
+Trig.hello_world
+
+require 'date'
+
+dt = Date.new(2001,2,3)
+puts dt
+
+dt2 = Date.parse('2001-01-01')
+puts dt2
+
+dtt = DateTime.new(2001,2,3.5)
+puts dtt
+puts dtt.strftime('%Y-%m-%d %I:%M:%S %p')
+puts Date.commercial(2012)
