@@ -1,4 +1,6 @@
 class Person
+  attr_reader :name
+  attr_reader :email
 	def initialize(name, email)
 		@name = name;
 		@email = email;
@@ -7,6 +9,15 @@ class Person
 	def to_s
 		@name + ", " + @email
 	end
+	
+	def ==(comparison_object)
+	  super || 
+	  comparison_object.instance_of?(self.class) &&
+	  comparison_object.name == name &&
+	  comparison_object.email == email
+  end
+  alias :eql? :==
+  
 end
 
 class Boss < Person
@@ -45,9 +56,13 @@ puts e.pop
 puts e.pop
 
 p = Person.new("johan", "johan@baminfo.se")
+p2 = Person.new("johan", "johan@baminfo.se")
 z = Boss.new("johan", "johan@baminfo.se")
 puts p
 puts z
+
+puts p == p2
+puts p.eql? p2
 
 t1 = Thread.new do
 	puts "In new thread"
@@ -120,3 +135,47 @@ dtt = DateTime.new(2001,2,3.5)
 puts dtt
 puts dtt.strftime('%Y-%m-%d %I:%M:%S %p')
 puts Date.commercial(2012)
+
+print "43278".split(//).collect! {|i| i.to_i}.sort.join(", ") + "\n"
+print "12345".split(//).collect! {|i| i.to_i ** 2}.join(", ") + "\n"
+
+class TestStatic
+  class << self
+    def value_of obj
+      obj.to_s
+    end
+  end
+end
+
+puts TestStatic.value_of 42 
+
+class StateMachineExample
+  def process obj
+    process_hook obj
+  end
+
+private
+  def process_state_1 obj
+    # ...
+    class << self
+      puts "State 1"
+      alias process_hook process_state_2
+    end
+  end
+
+  def process_state_2 obj
+    # ...
+    class << self
+      puts "State 2"
+      alias process_hook process_state_1
+    end
+  end
+
+  # Set up initial state
+  alias process_hook process_state_1
+end
+
+s = StateMachineExample.new
+s.process(1)
+s.process(1)
+s.process(1)
