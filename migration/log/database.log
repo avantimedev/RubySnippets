@@ -1,0 +1,25 @@
+D, [2011-12-21T02:46:44.411090 #54571] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+D, [2011-12-21T02:46:44.415895 #54571] DEBUG -- :   [1m[35m (4.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+D, [2011-12-21T02:46:44.416216 #54571] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+D, [2011-12-21T02:46:44.417837 #54571] DEBUG -- :   [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2011-12-21T02:46:44.419778 #54571] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-12-21T02:46:44.419884 #54571]  INFO -- : Migrating to CreateUsers (2)
+D, [2011-12-21T02:46:44.424191 #54571] DEBUG -- :   [1m[35m (0.8ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) 
+D, [2011-12-21T02:46:44.425124 #54571] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('2')[0m
+D, [2011-12-21T02:53:15.573539 #54577] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-12-21T02:53:15.573700 #54577]  INFO -- : Migrating to CreateUsers (2)
+D, [2011-12-21T03:07:40.081000 #54617] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-12-21T03:07:40.081163 #54617]  INFO -- : Migrating to AddPhonenumber (1)
+D, [2011-12-21T03:07:40.081425 #54617] DEBUG -- :   [1m[35m (0.1ms)[0m  select sqlite_version(*)
+D, [2011-12-21T03:08:58.897310 #54622] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-12-21T03:08:58.897476 #54622]  INFO -- : Migrating to AddPhoneToUsers (1)
+D, [2011-12-21T03:08:58.897738 #54622] DEBUG -- :   [1m[35m (0.1ms)[0m  select sqlite_version(*)
+D, [2011-12-21T03:10:09.089798 #54628] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-12-21T03:10:09.089964 #54628]  INFO -- : Migrating to AddPhoneToUsers (1)
+D, [2011-12-21T03:10:09.090226 #54628] DEBUG -- :   [1m[35m (0.1ms)[0m  select sqlite_version(*)
+D, [2011-12-21T03:10:09.093089 #54628] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mALTER TABLE "users" ADD "phone" varchar(255)[0m
+D, [2011-12-21T03:10:09.093924 #54628] DEBUG -- :   [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('1')
+I, [2011-12-21T03:10:09.097858 #54628]  INFO -- : Migrating to CreateUsers (2)
+D, [2011-12-21T03:15:18.800354 #54645] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2011-12-21T03:15:18.800540 #54645]  INFO -- : Migrating to AddPhoneToUsers (1)
+I, [2011-12-21T03:15:18.800601 #54645]  INFO -- : Migrating to CreateUsers (2)
